@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<center><img src="{{ url_for('static', filename= filename) }}" alt="" style="width: 600px; height:300px;"></center>
+<br>
+<br>
+{% if show==True %}
+<center>
+
+    {% if message=="healthy" %}
+    <h3><span class="badge badge-success">{{message}}</span></h3>
+    {%endif%}
+
+    {% if message=="pneumonic" %}
+    <h3><span class="badge badge-danger">{{message}}</span></h3>
+    {%endif%}
+    <br>
+    <br>
+
+    <a href="/" class="btn btn-info" role="button">Назад</a>
+</center>
+{% else %}
+<center>
+    <form action="/" method="POST" enctype="multipart/form-data">
+        <input type="file" name="img" id="img">
+        <button type="submit" class="btn btn-primary">Проверить</button>
+    </form>
+    <br>
+    <br>
+    {{message}}
+</center>
+{% endif %}
+{% endblock%}
